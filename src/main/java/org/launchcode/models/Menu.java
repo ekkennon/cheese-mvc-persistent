@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by ekk on 18-Jun-17.
+ * Created by raefo on 18-Jun-17.
  */
 
 @Entity
-public class Category {
+public class Menu {
     @Id
     @GeneratedValue
     private int id;
@@ -20,14 +20,14 @@ public class Category {
     @Size(min=3, max=15)
     private String name;
 
-    @OneToMany
+    @ManyToMany
     @JoinColumn(name = "category_id")
     private List<Cheese> cheeses = new ArrayList<>();
 
-    public Category() {
+    public Menu() {
     }
 
-    public Category(String name) {
+    public Menu(String name) {
         this.name = name;
     }
 
@@ -45,5 +45,9 @@ public class Category {
 
     public List<Cheese> getCheeses() {
         return cheeses;
+    }
+
+    public void addItem(Cheese item) {
+        cheeses.add(item);
     }
 }

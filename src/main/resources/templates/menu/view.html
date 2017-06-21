@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+    <h1 th:text="${#strings.capitalizeWords(menu.name)}"></h1>
+
+    <nav th:replace="fragments :: mainnav"></nav>
+
+    <ul>
+        <li th:each="cheese : ${menu.cheeses}" th:text="${cheese.name}"></li>
+    </ul>
+
+    <p><a th:href="'/menu/add-item/' + ${menu.id}">Add Cheese</a></p>
+
+    <nav th:replace="fragments :: menunav"></nav>
+    </body>
+</html>
